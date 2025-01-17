@@ -4,6 +4,9 @@
     $org = $user->organisation;
 @endphp
 <x-app-layout>
+    @push('meta')
+        <meta http-equiv="refresh" content="30">
+    @endpush
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Messages') }}
