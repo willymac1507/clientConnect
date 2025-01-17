@@ -1,16 +1,15 @@
-<?php $class = $thread->isUnread(Auth::id()) ? 'alert-info' : ''; ?>
-
-<div class="media alert {{ $class }}">
-    <h4 class="media-heading">
-        <a href="{{ route('messages.show', $thread->id) }}">{{ $thread->subject }}</a>
-        ({{ $thread->userUnreadMessagesCount(Auth::id()) }} unread)</h4>
-    <p>
+<?php $class = $thread->isUnread(Auth::id()) ? 'font-bold' : ''; ?>
+<tr class="py-2 text-sm">
+    <td class="text-left border-r">
+        <a class="{{ $class }}" href="{{ route('messages.show', $thread->id) }}">{{ $thread->subject }}</a>
+    </td>
+    <td class="pl-2 text-left border-r">
         {{ $thread->latestMessage->body }}
-    </p>
-    <p>
-        <small><strong>Creator:</strong> {{ $thread->creator()->name }}</small>
-    </p>
-    <p>
-        <small><strong>Participants:</strong> {{ $thread->participantsString(Auth::id()) }}</small>
-    </p>
-</div>
+    </td>
+    <td class="pl-2 text-left border-r">
+        {{ $thread->latestMessage->user->name }}
+    </td>
+    <td class="text-right">
+        {{ $thread->latestMessage->created_at->diffForHumans() }}
+    </td>
+</tr>

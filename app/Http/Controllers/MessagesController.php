@@ -142,9 +142,9 @@ class MessagesController extends Controller
         $participant->save();
 
         // Recipients
-        if (Request::has('recipients')) {
-            $thread->addParticipant(Request::input('recipients'));
-        }
+//        if (Request::has('recipients')) {
+//            $thread->addParticipant(Request::input('recipients'));
+//        }
 
         return redirect()->route('messages.show', $id);
     }

@@ -6,6 +6,7 @@ namespace App\Models;
 use Cmgmyr\Messenger\Traits\Messagable;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -38,6 +39,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function organisation(): BelongsTo
+    {
+        return $this->belongsTo(Organisation::class);
+    }
 
     public function calendar(): HasOne
     {
